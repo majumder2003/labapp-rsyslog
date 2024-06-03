@@ -51,8 +51,8 @@ const initScript = () => {
     template.style.display = "none";
 }
 
+
 const addTemp = () => {
     console.log(this.tempCount);
     this.tempCount++;
-    
 }
