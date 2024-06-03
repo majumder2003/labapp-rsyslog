@@ -8,8 +8,8 @@
     integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-<body>
-  <div id="app" class="container-fluid" >
+<body onload="initScript()">
+  <div id="app" class="container">
     <!-- Navbar Section -->
     <ul class="nav nav-tabs" id="myTab" role="tablist">
       <li class="nav-item" role="presentation">
@@ -34,38 +34,73 @@
         tabindex="0">
         <h2>Server Side Configuration</h2>
         <!-- Server card -->
-        <div class="card text-center">
-          <div class="card-header">
-            Fill up the requirements
-          </div>
-          <div class="card-body my-3">
-            <h4>Global config</h4>
-            <div class="input-group input-group-sm mb-3">
-              <select class="form-select" id="protocol" aria-label="Default select example">
-                <option selected>--Select Protocol--</option>
-                <option value="tcp">TCP</option>
-                <option value="udp">UDP</option>
-                <option value="any">Any</option>
-              </select>
+        <div class="row">
+          <div class="card text-center">
+            <div class="card-header">
+              Fill up the requirements
             </div>
-            <div class="input-group input-group-sm mb-3">
-              <span class="input-group-text" id="inputGroup-sizing-sm">Input Port</span>
-              <input type="text" id="port" class="form-control" aria-label="Sizing example input"
-                aria-describedby="inputGroup-sizing-sm">
+            <div class="card-body my-3">
+              <h4>Global config</h4>
+              <div class="input-group input-group-sm mb-3">
+                <select class="form-select" id="protocol" aria-label="Default select example">
+                  <option selected>--Select Protocol--</option>
+                  <option value="tcp">TCP</option>
+                  <option value="udp">UDP</option>
+                  <option value="any">Any</option>
+                </select>
+              </div>
+              <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Input Port</span>
+                <input type="text" id="port" class="form-control" aria-label="Sizing example input"
+                  aria-describedby="inputGroup-sizing-sm">
+              </div>
             </div>
-          </div>
-          <div class="card-footer text-body-secondary row justify-content-evenly">
-            <button class="btn btn-primary col-md-2" onclick="globalPortConfig()">Create Basic Config</button>
-            <button class="btn btn-success col-md-2">Create Templates</button>
-            <button class="btn btn-danger col-md-2">Create Filters</button>
+            <div class="card-footer text-body-secondary justify-content-evenly">
+              <button class="btn btn-primary col-md-2" onclick="globalPortConfig()">Create Basic Config</button>
+              <button class="btn btn-success col-md-2" id="btnTemplate" onclick="toggleTemplate()">Create
+                template</button>
+              <button class="btn btn-danger col-md-2">Create Filters</button>
+            </div>
           </div>
         </div>
         <!-- Server card end -->
+        <hr />
+        <!-- template card -->
+        <div class="row" id="template">
+          <div class="card text-center">
+            <div class="card-header">
+              Create template to save the incoming logs in a certain file path
+            </div>
+            <div class="card-body mb-3" id="tempCard">
+              <div id="moreTemp">
+                <div class="input-group input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Template Name</span>
+                  <input type="text" id="tempName" class="form-control" aria-label="Sizing example input"
+                    aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="input-group input-group mb-3">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">File path</span>
+                  <input type="text" id="tempFile" class="form-control" aria-label="Sizing example input"
+                    placeholder="Example: /var/log/hostname/source-ip/programm-name.log"
+                    aria-describedby="inputGroup-sizing-sm">
+                </div>
+                <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                  <button class="btn btn-primary" type="button" onclick="addTemp()">Add more</button>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">Card Footer</div>
+          </div>
+        </div>
+        <!-- template card end -->
+        <hr />
         <!-- Result card -->
-        <div class="card ">
-          <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text" id="configOutput"></p>
+        <div class="row">
+          <div class="card ">
+            <div class="card-body">
+              <h5 class="card-title"></h5>
+              <p class="card-text" id="configOutput"></p>
+            </div>
           </div>
         </div>
         <!-- Result card end -->
@@ -101,7 +136,7 @@
   </div>
 
   <script src="./index.mjs" type="module"></script>
-  <script src="./assets/main.js"></script>
+  <script src="./assets/js/main.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
     integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
     crossorigin="anonymous"></script>
