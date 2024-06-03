@@ -54,4 +54,5 @@ const initScript = () => {
 const addTemp = () => {
     console.log(this.tempCount);
     this.tempCount++;
+    
 }
