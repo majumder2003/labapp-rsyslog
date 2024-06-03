@@ -1,3 +1,5 @@
+var tempCount = 0;
+
 const globalPortConfig = () => {
     var protocol = document.getElementById("protocol").value;
     var port = document.getElementById("port").value;
@@ -31,3 +33,25 @@ const globalPortConfig = () => {
     }
     document.getElementById("configOutput").innerHTML = final;
 };
+
+const toggleTemplate = () => {
+    var template = document.getElementById("template");
+    if(template.style.display === "none") {
+        template.style.display = "block";
+        document.getElementById("btnTemplate").innerHTML = "Don't create template"
+    }
+    else {
+        template.style.display = "none";
+        document.getElementById("btnTemplate").innerHTML = "Create template"
+    }
+}
+
+const initScript = () => {
+    var template = document.getElementById("template");
+    template.style.display = "none";
+}
+
+const addTemp = () => {
+    console.log(this.tempCount);
+    this.tempCount++;
+}
