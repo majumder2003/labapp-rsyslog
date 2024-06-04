@@ -86,4 +86,5 @@ const addTemp = () => {
     mainDiv.appendChild(newDiv1);
     mainDiv.appendChild(newDiv2);
     this.tempCount++;
+    
 }
