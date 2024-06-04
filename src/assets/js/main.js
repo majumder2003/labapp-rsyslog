@@ -53,5 +53,38 @@ const initScript = () => {
 
 const addTemp = () => {
     console.log(this.tempCount);
+    const mainDiv = document.getElementById("moreTemp");
+    const newDiv1 = document.createElement('div');
+    newDiv1.className = "input-group input-group mb-3";
+    const nameLabel = document.createElement("p");
+    nameLabel.className = "col-md-2";
+    nameLabel.id = "inputGroup-sizing-sm";
+    nameLabel.innerHTML = "Template name"
+    const nameBox = document.createElement("input");
+    nameBox.type = "text";
+    nameBox.id = `tempName-${this.tempCount}`;
+    nameBox.className = "form-control col-md-8";
+    nameBox.ariaLabel = "Sizing example input";
+    nameBox.placeholder = "Enter template name";
+
+    const newDiv2 = document.createElement('div');
+    newDiv2.className = "input-group input-group mb-3";
+    const pathLabel = document.createElement("p");
+    pathLabel.className = "col-md-2";
+    pathLabel.id = "inputGroup-sizing-sm";
+    pathLabel.innerHTML = "Log file path"
+    const pathBox = document.createElement("input");
+    pathBox.type = "text";
+    pathBox.id = `tempPath-${this.tempCount}`;
+    pathBox.className = "form-control col-md-8";
+    pathBox.ariaLabel = "Sizing example input";
+    pathBox.placeholder = "Example: /var/log/hostname/source-ip/programm-name.log";
+    newDiv1.appendChild(nameLabel);
+    newDiv1.appendChild(nameBox);
+    newDiv2.appendChild(pathLabel);
+    newDiv2.appendChild(pathBox);
+    mainDiv.appendChild(newDiv1);
+    mainDiv.appendChild(newDiv2);
     this.tempCount++;
+    
 }
